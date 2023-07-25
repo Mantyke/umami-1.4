@@ -10,24 +10,19 @@ export default async (req, res) => {
 
   const { id: websiteUuid } = req.query;
 
-  if (req.method === 'GET') {
-    if (!(await allowQuery(req, TYPE_WEBSITE))) {
-      return unauthorized(res);
-    }
+  if (!(await allowQuery(req, TYPE_WEBSITE))) {
+    return unauthorized(res);
+  }
 
+  if (req.method === 'GET') {
     const website = await getWebsite({ websiteUuid });
 
     return ok(res, website);
   }
 
   if (req.method === 'POST') {
-    if (!(await allowQuery(req, TYPE_WEBSITE, false))) {
-      return unauthorized(res);
-    }
-
     const { name, domain, owner, enableShareUrl, shareId } = req.body;
     const { accountUuid } = req.auth;
-
     let account;
 
     if (accountUuid) {
@@ -47,8 +42,8 @@ export default async (req, res) => {
         {
           name,
           domain,
-          shareId: shareId && enableShareUrl === undefined ? shareId : newShareId,
-          userId: +owner || account.id,
+          shareId: shareId ? shareId : newShareId,
+          userId: account ? account.id : +owner || undefined,
         },
         { websiteUuid },
       );
@@ -62,7 +57,7 @@ export default async (req, res) => {
   }
 
   if (req.method === 'DELETE') {
-    if (!(await allowQuery(req, TYPE_WEBSITE, false))) {
+    if (!(await allowQuery(req, TYPE_WEBSITE))) {
       return unauthorized(res);
     }
 

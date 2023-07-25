@@ -39,7 +39,7 @@ export async function deleteAccount(userId) {
       }),
     ])
     .then(async res => {
-      if (redis.enabled) {
+      if (redis.client) {
         for (let i = 0; i < websiteUuids.length; i++) {
           await redis.set(`website:${websiteUuids[i]}`, DELETED);
         }

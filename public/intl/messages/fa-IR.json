@@ -244,7 +244,7 @@
   "label.none": [
     {
       "type": 0,
-      "value": "هیچ"
+      "value": "None"
     }
   ],
   "label.owner": [
@@ -474,7 +474,7 @@
   "message.edit-dashboard": [
     {
       "type": 0,
-      "value": "ویرایش داشبورد"
+      "value": "Edit dashboard"
     }
   ],
   "message.failure": [
@@ -754,7 +754,7 @@
   "metrics.query-parameters": [
     {
       "type": 0,
-      "value": "پارامترهای کوئری"
+      "value": "Query parameters"
     }
   ],
   "metrics.referrers": [
@@ -766,7 +766,7 @@
   "metrics.screens": [
     {
       "type": 0,
-      "value": "نمایشگرها"
+      "value": "Screens"
     }
   ],
   "metrics.unique-visitors": [
