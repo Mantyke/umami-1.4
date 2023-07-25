@@ -1,18 +1,22 @@
 require('dotenv').config();
 const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
 const chalk = require('chalk');
 const spawn = require('cross-spawn');
+const { execSync } = require('child_process');
 
-let message = '';
-const updateMessage = `To update your database, you need to run:\n${chalk.bold.whiteBright(
-  'yarn update-db',
-)}`;
-const baselineMessage = cmd =>
-  `You need to update your database by running:\n${chalk.bold.whiteBright(cmd)}`;
+if (process.env.SKIP_DB_CHECK) {
+  console.log('Skipping database check.');
+  process.exit(0);
+}
+
+const prisma = new PrismaClient();
 
 function success(msg) {
   console.log(chalk.greenBright(`✓ ${msg}`));
+}
+
+function error(msg) {
+  console.log(chalk.redBright(`✗ ${msg}`));
 }
 
 async function checkEnv() {
@@ -39,9 +43,10 @@ async function checkTables() {
 
     success('Database tables found.');
   } catch (e) {
-    message = updateMessage;
+    error('Database tables not found.');
+    console.log('Adding tables...');
 
-    throw new Error('Database tables not found.');
+    console.log(execSync('prisma migrate deploy').toString());
   }
 }
 
@@ -63,19 +68,21 @@ async function run(cmd, args) {
 async function checkMigrations() {
   const output = await run('prisma', ['migrate', 'status']);
 
-  const missingMigrations = output.includes('Following migration have not yet been applied');
+  console.log(output);
+
+  const missingMigrations = output.includes('have not yet been applied');
+  const missingInitialMigration =
+    output.includes('01_init') && !output.includes('The last common migration is: 01_init');
   const notManaged = output.includes('The current database is not managed');
 
-  if (notManaged) {
-    const cmd = output.match(/yarn prisma migrate resolve --applied ".*"/g);
+  if (notManaged || missingMigrations) {
+    console.log('Running update...');
 
-    message = baselineMessage(cmd[0]);
+    if (missingInitialMigration) {
+      console.log(execSync('prisma migrate resolve --applied "01_init"').toString());
+    }
 
-    throw new Error('Database is out of date.');
-  } else if (missingMigrations) {
-    message = updateMessage;
-
-    throw new Error('Database is out of date.');
+    console.log(execSync('prisma migrate deploy').toString());
   }
 
   success('Database is up to date.');
@@ -92,7 +99,6 @@ async function checkMigrations() {
     } finally {
       await prisma.$disconnect();
       if (err) {
-        console.log(message);
         process.exit(1);
       }
     }

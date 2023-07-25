@@ -6,12 +6,6 @@ Umami is a simple, fast, privacy-focused alternative to Google Analytics.
 
 A detailed getting started guide can be found at [https://umami.is/docs/](https://umami.is/docs/)
 
-A fast way to get up and running is to use Railway
-
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/umami)
-
-See [Running on Railway](https://umami.is/docs/running-on-railway) to get started.
-
 ## Installing from source
 
 ### Requirements
@@ -28,7 +22,7 @@ npm install -g yarn
 ### Get the source code and install packages
 
 ```
-git clone https://github.com/mikecao/umami.git
+git clone https://github.com/umami-software/umami.git
 cd umami
 yarn install
 ```
@@ -38,7 +32,7 @@ yarn install
 Create an `.env` file with the following
 
 ```
-DATABASE_URL=(connection url)
+DATABASE_URL=connection-url
 ```
 
 The connection url is in the following format:
@@ -47,8 +41,6 @@ postgresql://username:mypassword@localhost:5432/mydb
 
 mysql://username:mypassword@localhost:3306/mydb
 ```
-
-This will also create a login account with username **admin** and password **umami**.
 
 ### Build the application
 
@@ -61,6 +53,8 @@ yarn build
 ```bash
 yarn update-db
 ```
+
+This will also create a login account with username **admin** and password **umami**.
 
 ### Start the application
 
@@ -82,12 +76,12 @@ docker-compose up
 
 Alternatively, to pull just the Umami Docker image with PostgreSQL support:
 ```bash
-docker pull ghcr.io/mikecao/umami:postgresql-latest
+docker pull docker.umami.is/umami-software/umami:postgresql-latest
 ```
 
 Or with MySQL support:
 ```bash
-docker pull ghcr.io/mikecao/umami:mysql-latest
+docker pull docker.umami.is/umami-software/umami:mysql-latest
 ```
 
 ## Getting updates
@@ -98,7 +92,6 @@ To get the latest features, simply do a pull, install any new dependencies, and 
 git pull
 yarn install
 yarn build
-yarn update-db
 ```
 
 To update the Docker image, simply pull the new images and rebuild:
