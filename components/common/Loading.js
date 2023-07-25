@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './Loading.module.css';
 
-function Loading({ className, overlay = false }) {
+function Loading({ className }) {
   return (
-    <div className={classNames(styles.loading, { [styles.overlay]: overlay }, className)}>
+    <div className={classNames(styles.loading, className)}>
       <div />
       <div />
       <div />
@@ -15,7 +15,6 @@ function Loading({ className, overlay = false }) {
 
 Loading.propTypes = {
   className: PropTypes.string,
-  overlay: PropTypes.bool,
 };
 
 export default Loading;

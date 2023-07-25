@@ -29,6 +29,12 @@
       "value": "Alle"
     }
   ],
+  "label.all-events": [
+    {
+      "type": 0,
+      "value": "Alle Ereignisse"
+    }
+  ],
   "label.all-time": [
     {
       "type": 0,
@@ -244,7 +250,7 @@
   "label.none": [
     {
       "type": 0,
-      "value": "Keine"
+      "value": "None"
     }
   ],
   "label.owner": [
@@ -397,12 +403,6 @@
       "value": "Webseiten"
     }
   ],
-  "label.yesterday": [
-    {
-      "type": 0,
-      "value": "Gestern"
-    }
-  ],
   "message.active-users": [
     {
       "type": 1,
@@ -475,12 +475,6 @@
     {
       "type": 0,
       "value": "Alle zugehörigen Daten werden ebenfalls gelöscht."
-    }
-  ],
-  "message.edit-dashboard": [
-    {
-      "type": 0,
-      "value": "Dashboard bearbeiten"
     }
   ],
   "message.failure": [
@@ -771,12 +765,6 @@
     {
       "type": 0,
       "value": "Seiten"
-    }
-  ],
-  "metrics.query-parameters": [
-    {
-      "type": 0,
-      "value": "Abfrageparameter"
     }
   ],
   "metrics.referrers": [

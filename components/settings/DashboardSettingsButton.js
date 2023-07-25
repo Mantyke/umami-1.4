@@ -1,35 +1,26 @@
 import React from 'react';
-import { defineMessages, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import MenuButton from 'components/common/MenuButton';
 import Gear from 'assets/gear.svg';
-import { saveDashboard } from 'store/dashboard';
+import useStore, { setDashboard, defaultDashboardConfig } from 'store/app';
 
-const messages = defineMessages({
-  toggleCharts: { id: 'message.toggle-charts', defaultMessage: 'Toggle charts' },
-  editDashboard: { id: 'message.edit-dashboard', defaultMessage: 'Edit dashboard' },
-});
+const selector = state => state.dashboard;
 
 export default function DashboardSettingsButton() {
-  const { formatMessage } = useIntl();
+  const settings = useStore(selector);
 
   const menuOptions = [
     {
-      label: formatMessage(messages.toggleCharts),
+      label: <FormattedMessage id="message.toggle-charts" defaultMessage="Toggle charts" />,
       value: 'charts',
-    },
-    {
-      label: formatMessage(messages.editDashboard),
-      value: 'order',
     },
   ];
 
   function handleSelect(value) {
     if (value === 'charts') {
-      saveDashboard(state => ({ showCharts: !state.showCharts }));
+      setDashboard({ ...defaultDashboardConfig, showCharts: !settings.showCharts });
     }
-    if (value === 'order') {
-      saveDashboard({ editing: true });
-    }
+    //setDashboard(value);
   }
 
   return <MenuButton icon={<Gear />} options={menuOptions} onSelect={handleSelect} hideLabel />;

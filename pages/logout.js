@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { removeItem } from 'next-basics';
+import { removeItem } from 'lib/web';
 import { AUTH_TOKEN } from 'lib/constants';
 import { setUser } from 'store/app';
 

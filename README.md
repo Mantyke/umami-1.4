@@ -22,7 +22,7 @@ npm install -g yarn
 ### Get the source code and install packages
 
 ```
-git clone https://github.com/umami-software/umami.git
+git clone https://github.com/mikecao/umami.git
 cd umami
 yarn install
 ```
@@ -92,6 +92,7 @@ To get the latest features, simply do a pull, install any new dependencies, and 
 git pull
 yarn install
 yarn build
+yarn update-db
 ```
 
 To update the Docker image, simply pull the new images and rebuild:

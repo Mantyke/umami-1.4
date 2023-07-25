@@ -19,10 +19,6 @@ export const filterOptions = [
     value: '24hour',
   },
   {
-    label: <FormattedMessage id="label.yesterday" defaultMessage="Yesterday" />,
-    value: '-1day',
-  },
-  {
     label: <FormattedMessage id="label.this-week" defaultMessage="This week" />,
     value: '1week',
     divider: true,

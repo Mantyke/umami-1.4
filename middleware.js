@@ -33,6 +33,14 @@ function customScriptName(req) {
   }
 }
 
+function forceSSL(req, res) {
+  if (process.env.FORCE_SSL && req.nextUrl.protocol === 'http:') {
+    res.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  }
+
+  return res;
+}
+
 export default function middleware(req) {
   const fns = [customCollectEndpoint, customScriptName];
 
@@ -43,5 +51,5 @@ export default function middleware(req) {
     }
   }
 
-  return NextResponse.next();
+  return forceSSL(req, NextResponse.next());
 }

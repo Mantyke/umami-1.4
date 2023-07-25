@@ -1,4 +1,4 @@
-import { methodNotAllowed, ok, unauthorized } from 'next-basics';
+import { methodNotAllowed, ok, unauthorized } from 'lib/response';
 import { allowQuery } from 'lib/auth';
 import { useCors } from 'lib/middleware';
 import { getActiveVisitors } from 'queries';

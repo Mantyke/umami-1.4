@@ -3,6 +3,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { FixedSizeList } from 'react-window';
 import firstBy from 'thenby';
 import Icon from 'components/common/Icon';
+import Tag from 'components/common/Tag';
 import Dot from 'components/common/Dot';
 import FilterButtons from 'components/common/FilterButtons';
 import NoData from 'components/common/NoData';
@@ -91,7 +92,8 @@ export default function RealtimeLog({ data, websites, websiteId }) {
   }
 
   function getDetail({
-    event_name,
+    event_type,
+    event_value,
     view_id,
     session_id,
     url,
@@ -101,8 +103,12 @@ export default function RealtimeLog({ data, websites, websiteId }) {
     device,
     website_id,
   }) {
-    if (event_name) {
-      return <div>{event_name}</div>;
+    if (event_type) {
+      return (
+        <div>
+          <Tag>{event_type}</Tag> {event_value}
+        </div>
+      );
     }
     if (view_id) {
       const domain = getWebsite({ website_id })?.domain;

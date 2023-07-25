@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { defineMessages, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import firstBy from 'thenby';
 import classNames from 'classnames';
 import Link from 'components/common/Link';
@@ -14,10 +14,6 @@ import DataTable from './DataTable';
 import { DEFAULT_ANIMATION_DURATION } from 'lib/constants';
 import styles from './MetricsTable.module.css';
 
-const messages = defineMessages({
-  more: { id: 'label.more', defaultMessage: 'More' },
-});
-
 export default function MetricsTable({
   websiteId,
   type,
@@ -26,7 +22,6 @@ export default function MetricsTable({
   filterOptions,
   limit,
   onDataLoad,
-  delay = null,
   ...props
 }) {
   const [{ startDate, endDate, modified }] = useDateRange(websiteId);
@@ -35,7 +30,6 @@ export default function MetricsTable({
     router,
     query: { url, referrer, os, browser, device, country },
   } = usePageQuery();
-  const { formatMessage } = useIntl();
 
   const { data, loading, error } = useFetch(
     `/website/${websiteId}/metrics`,
@@ -52,19 +46,16 @@ export default function MetricsTable({
         country,
       },
       onDataLoad,
-      delay: delay || DEFAULT_ANIMATION_DURATION,
+      delay: DEFAULT_ANIMATION_DURATION,
     },
-    [type, modified, url, referrer, os, browser, device, country],
+    [modified, url, referrer, os, browser, device, country],
   );
 
   const filteredData = useMemo(() => {
     if (data) {
-      let items = percentFilter(dataFilter ? dataFilter(data, filterOptions) : data);
+      const items = percentFilter(dataFilter ? dataFilter(data, filterOptions) : data);
       if (limit) {
-        items = items.filter((e, i) => i < limit);
-      }
-      if (filterOptions?.sort === false) {
-        return items;
+        return items.filter((e, i) => i < limit).sort(firstBy('y', -1).thenBy('x'));
       }
       return items.sort(firstBy('y', -1).thenBy('x'));
     }
@@ -85,7 +76,7 @@ export default function MetricsTable({
             size="small"
             iconRight
           >
-            {formatMessage(messages.more)}
+            <FormattedMessage id="label.more" defaultMessage="More" />
           </Link>
         )}
       </div>

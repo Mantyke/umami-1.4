@@ -12,7 +12,7 @@ export default function EventsChart({ websiteId, className, token }) {
   const [{ startDate, endDate, unit, modified }] = useDateRange(websiteId);
   const [timezone] = useTimezone();
   const {
-    query: { url, eventName },
+    query: { url, eventType },
   } = usePageQuery();
 
   const { data, loading } = useFetch(
@@ -24,11 +24,11 @@ export default function EventsChart({ websiteId, className, token }) {
         unit,
         tz: timezone,
         url,
-        event_name: eventName,
+        event_type: eventType,
         token,
       },
     },
-    [modified, eventName],
+    [modified, eventType],
   );
 
   const datasets = useMemo(() => {

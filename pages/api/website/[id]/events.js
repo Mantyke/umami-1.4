@@ -1,6 +1,6 @@
 import moment from 'moment-timezone';
 import { getEventMetrics } from 'queries';
-import { ok, badRequest, methodNotAllowed, unauthorized } from 'next-basics';
+import { ok, badRequest, methodNotAllowed, unauthorized } from 'lib/response';
 import { allowQuery } from 'lib/auth';
 import { useCors } from 'lib/middleware';
 
@@ -14,7 +14,7 @@ export default async (req, res) => {
       return unauthorized(res);
     }
 
-    const { id, start_at, end_at, unit, tz, url, event_name } = req.query;
+    const { id, start_at, end_at, unit, tz, url, event_type } = req.query;
 
     if (!moment.tz.zone(tz) || !unitTypes.includes(unit)) {
       return badRequest(res);
@@ -26,7 +26,7 @@ export default async (req, res) => {
 
     const events = await getEventMetrics(websiteId, startDate, endDate, tz, unit, {
       url,
-      event_name,
+      event_type,
     });
 
     return ok(res, events);

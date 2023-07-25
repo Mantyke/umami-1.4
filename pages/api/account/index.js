@@ -1,6 +1,7 @@
-import { ok, unauthorized, methodNotAllowed, badRequest, hashPassword } from 'next-basics';
 import { getAccountById, getAccountByUsername, updateAccount, createAccount } from 'queries';
 import { useAuth } from 'lib/middleware';
+import { hashPassword } from 'lib/crypto';
+import { ok, unauthorized, methodNotAllowed, badRequest } from 'lib/response';
 
 export default async (req, res) => {
   await useAuth(req, res);

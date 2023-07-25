@@ -2,8 +2,8 @@ import React from 'react';
 import Layout from 'components/layout/Layout';
 import LoginForm from 'components/forms/LoginForm';
 
-export default function LoginPage({ loginDisabled }) {
-  if (loginDisabled) {
+export default function LoginPage() {
+  if (process.env.loginDisabled) {
     return null;
   }
 
@@ -12,10 +12,4 @@ export default function LoginPage({ loginDisabled }) {
       <LoginForm />
     </Layout>
   );
-}
-
-export async function getServerSideProps() {
-  return {
-    props: { loginDisabled: !!process.env.DISABLE_LOGIN },
-  };
 }

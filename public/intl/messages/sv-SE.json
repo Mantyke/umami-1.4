@@ -29,6 +29,12 @@
       "value": "Alla"
     }
   ],
+  "label.all-events": [
+    {
+      "type": 0,
+      "value": "Alla händelser"
+    }
+  ],
   "label.all-time": [
     {
       "type": 0,
@@ -475,12 +481,6 @@
       "value": "All tillhörande data kommer också raderas."
     }
   ],
-  "message.edit-dashboard": [
-    {
-      "type": 0,
-      "value": "Edit dashboard"
-    }
-  ],
   "message.failure": [
     {
       "type": 0,
@@ -769,12 +769,6 @@
     {
       "type": 0,
       "value": "Sidor"
-    }
-  ],
-  "metrics.query-parameters": [
-    {
-      "type": 0,
-      "value": "Query parameters"
     }
   ],
   "metrics.referrers": [

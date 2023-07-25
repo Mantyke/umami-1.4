@@ -29,6 +29,12 @@
       "value": "Todos"
     }
   ],
+  "label.all-events": [
+    {
+      "type": 0,
+      "value": "Todos os eventos"
+    }
+  ],
   "label.all-time": [
     {
       "type": 0,
@@ -170,7 +176,7 @@
   "label.language": [
     {
       "type": 0,
-      "value": "Língua"
+      "value": "Language"
     }
   ],
   "label.last-days": [
@@ -334,7 +340,7 @@
   "label.theme": [
     {
       "type": 0,
-      "value": "Tema"
+      "value": "Theme"
     }
   ],
   "label.this-month": [
@@ -473,12 +479,6 @@
     {
       "type": 0,
       "value": "Todos os dados associados também serão eliminados."
-    }
-  ],
-  "message.edit-dashboard": [
-    {
-      "type": 0,
-      "value": "Edit dashboard"
     }
   ],
   "message.failure": [
@@ -769,12 +769,6 @@
     {
       "type": 0,
       "value": "Páginas"
-    }
-  ],
-  "metrics.query-parameters": [
-    {
-      "type": 0,
-      "value": "Query parameters"
     }
   ],
   "metrics.referrers": [

@@ -29,10 +29,16 @@
       "value": "Semua"
     }
   ],
+  "label.all-events": [
+    {
+      "type": 0,
+      "value": "Semua peristiwa"
+    }
+  ],
   "label.all-time": [
     {
       "type": 0,
-      "value": "Semua waktu"
+      "value": "All time"
     }
   ],
   "label.all-websites": [
@@ -170,7 +176,7 @@
   "label.language": [
     {
       "type": 0,
-      "value": "Bahasa"
+      "value": "Language"
     }
   ],
   "label.last-days": [
@@ -242,7 +248,7 @@
   "label.owner": [
     {
       "type": 0,
-      "value": "Pemilik"
+      "value": "Owner"
     }
   ],
   "label.password": [
@@ -326,7 +332,7 @@
   "label.theme": [
     {
       "type": 0,
-      "value": "Tema"
+      "value": "Theme"
     }
   ],
   "label.this-month": [
@@ -416,7 +422,7 @@
   "message.confirm-reset": [
     {
       "type": 0,
-      "value": "Anda yakin ingin mengatur ulang statistik "
+      "value": "Are your sure you want to reset "
     },
     {
       "type": 1,
@@ -424,7 +430,7 @@
     },
     {
       "type": 0,
-      "value": "?"
+      "value": "'s statistics?"
     }
   ],
   "message.copied": [
@@ -437,12 +443,6 @@
     {
       "type": 0,
       "value": "Semua data terkait juga akan dihapus."
-    }
-  ],
-  "message.edit-dashboard": [
-    {
-      "type": 0,
-      "value": "Edit dashboard"
     }
   ],
   "message.failure": [
@@ -580,7 +580,7 @@
   "message.toggle-charts": [
     {
       "type": 0,
-      "value": "Buka grafik"
+      "value": "Toggle charts"
     }
   ],
   "message.track-stats": [
@@ -602,7 +602,7 @@
     },
     {
       "type": 0,
-      "value": " situs web nda."
+      "value": " situs web anda."
     }
   ],
   "message.type-delete": [
@@ -714,7 +714,7 @@
   "metrics.languages": [
     {
       "type": 0,
-      "value": "Bahasa"
+      "value": "Languages"
     }
   ],
   "metrics.operating-systems": [
@@ -735,12 +735,6 @@
       "value": "Halaman"
     }
   ],
-  "metrics.query-parameters": [
-    {
-      "type": 0,
-      "value": "Query parameters"
-    }
-  ],
   "metrics.referrers": [
     {
       "type": 0,
@@ -750,7 +744,7 @@
   "metrics.screens": [
     {
       "type": 0,
-      "value": "Layar"
+      "value": "Screens"
     }
   ],
   "metrics.unique-visitors": [

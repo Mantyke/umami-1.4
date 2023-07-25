@@ -7,7 +7,6 @@ on: [push]
 
 env:
   DATABASE_TYPE: postgresql
-  SKIP_DB_CHECK: 1
 
 jobs:
   build:

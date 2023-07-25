@@ -1,17 +1,18 @@
 const { Resolver } = require('dns').promises;
 import isbot from 'isbot';
 import ipaddr from 'ipaddr.js';
-import { createToken, unauthorized, send, badRequest, forbidden } from 'next-basics';
 import { savePageView, saveEvent } from 'queries';
 import { useCors, useSession } from 'lib/middleware';
 import { getJsonBody, getIpAddress } from 'lib/request';
-import { secret, uuid } from 'lib/crypto';
+import { ok, send, badRequest, forbidden } from 'lib/response';
+import { createToken } from 'lib/crypto';
+import { removeTrailingSlash } from 'lib/url';
 
 export default async (req, res) => {
   await useCors(req, res);
 
-  if (isbot(req.headers['user-agent']) && !process.env.DISABLE_BOT_CHECK) {
-    return unauthorized(res);
+  if (isbot(req.headers['user-agent'])) {
+    return ok(res);
   }
 
   const ignoreIps = process.env.IGNORE_IP;
@@ -59,35 +60,26 @@ export default async (req, res) => {
   await useSession(req, res);
 
   const {
-    session: { website_id, session_id, session_uuid },
+    session: { website_id, session_id },
   } = req;
 
   const { type, payload } = getJsonBody(req);
 
-  let { url, referrer, event_name, event_data } = payload;
+  let { url, referrer, event_type, event_value } = payload;
 
   if (process.env.REMOVE_TRAILING_SLASH) {
-    url = url.replace(/\/$/, '');
+    url = removeTrailingSlash(url);
   }
 
-  const event_uuid = uuid();
-
   if (type === 'pageview') {
-    await savePageView(website_id, { session_id, session_uuid, url, referrer });
+    await savePageView(website_id, session_id, url, referrer);
   } else if (type === 'event') {
-    await saveEvent(website_id, {
-      event_uuid,
-      session_id,
-      session_uuid,
-      url,
-      event_name,
-      event_data,
-    });
+    await saveEvent(website_id, session_id, url, event_type, event_value);
   } else {
     return badRequest(res);
   }
 
-  const token = createToken({ website_id, session_id, session_uuid }, secret());
+  const token = await createToken({ website_id, session_id });
 
   return send(res, token);
 };

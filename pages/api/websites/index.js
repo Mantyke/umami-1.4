@@ -1,6 +1,6 @@
 import { getAllWebsites, getUserWebsites } from 'queries';
 import { useAuth } from 'lib/middleware';
-import { ok, methodNotAllowed, unauthorized } from 'next-basics';
+import { ok, methodNotAllowed, unauthorized } from 'lib/response';
 
 export default async (req, res) => {
   await useAuth(req, res);

@@ -4,12 +4,10 @@ import { useRouter } from 'next/router';
 import Button from 'components/common/Button';
 import FormLayout, { FormButtons, FormRow } from 'components/layout/FormLayout';
 import CopyButton from 'components/common/CopyButton';
-import useConfig from 'hooks/useConfig';
 
 export default function TrackingCodeForm({ values, onClose }) {
   const ref = useRef();
   const { basePath } = useRouter();
-  const { trackerScriptName } = useConfig();
 
   return (
     <FormLayout>
@@ -26,9 +24,7 @@ export default function TrackingCodeForm({ values, onClose }) {
           rows={3}
           cols={60}
           spellCheck={false}
-          defaultValue={`<script async defer data-website-id="${values.website_uuid}" src="${
-            document.location.origin
-          }${basePath}/${trackerScriptName ? `${trackerScriptName}.js` : 'umami.js'}"></script>`}
+          defaultValue={`<script async defer data-website-id="${values.website_uuid}" src="${document.location.origin}${basePath}/umami.js"></script>`}
           readOnly
         />
       </FormRow>

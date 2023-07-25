@@ -29,6 +29,12 @@
       "value": "All"
     }
   ],
+  "label.all-events": [
+    {
+      "type": 0,
+      "value": "All events"
+    }
+  ],
   "label.all-time": [
     {
       "type": 0,
@@ -471,12 +477,6 @@
       "value": "Όλα τα σχετικά δεδομένα θα διαγραφούν επίσης."
     }
   ],
-  "message.edit-dashboard": [
-    {
-      "type": 0,
-      "value": "Edit dashboard"
-    }
-  ],
   "message.failure": [
     {
       "type": 0,
@@ -765,12 +765,6 @@
     {
       "type": 0,
       "value": "Σελίδες"
-    }
-  ],
-  "metrics.query-parameters": [
-    {
-      "type": 0,
-      "value": "Query parameters"
     }
   ],
   "metrics.referrers": [

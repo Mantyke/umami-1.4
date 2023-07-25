@@ -29,6 +29,12 @@
       "value": "所有"
     }
   ],
+  "label.all-events": [
+    {
+      "type": 0,
+      "value": "所有事件"
+    }
+  ],
   "label.all-time": [
     {
       "type": 0,
@@ -244,7 +250,7 @@
   "label.none": [
     {
       "type": 0,
-      "value": "无"
+      "value": "None"
     }
   ],
   "label.owner": [
@@ -449,12 +455,6 @@
     {
       "type": 0,
       "value": "所有相关数据将会被删除。"
-    }
-  ],
-  "message.edit-dashboard": [
-    {
-      "type": 0,
-      "value": "编辑仪表板"
     }
   ],
   "message.failure": [
@@ -755,12 +755,6 @@
       "value": "网页"
     }
   ],
-  "metrics.query-parameters": [
-    {
-      "type": 0,
-      "value": "查询参数"
-    }
-  ],
   "metrics.referrers": [
     {
       "type": 0,
@@ -770,7 +764,7 @@
   "metrics.screens": [
     {
       "type": 0,
-      "value": "屏幕尺寸"
+      "value": "Screens"
     }
   ],
   "metrics.unique-visitors": [

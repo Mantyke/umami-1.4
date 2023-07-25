@@ -1,13 +1,13 @@
-import { useRouter } from 'next/router';
-import Script from 'next/script';
+import React from 'react';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 import Link from 'components/common/Link';
 import styles from './Footer.module.css';
-import { CURRENT_VERSION, HOMEPAGE_URL, REPO_URL } from 'lib/constants';
+import useStore from 'store/version';
+import { HOMEPAGE_URL, REPO_URL } from 'lib/constants';
 
 export default function Footer() {
-  const { pathname } = useRouter();
+  const { current } = useStore();
 
   return (
     <footer className={classNames(styles.footer, 'row')}>
@@ -26,9 +26,11 @@ export default function Footer() {
         />
       </div>
       <div className={classNames(styles.version, 'col-12 col-md-4')}>
-        <Link href={REPO_URL}>{`v${CURRENT_VERSION}`}</Link>
+        <Link href={REPO_URL}>{`v${current}`}</Link>
       </div>
-      {!pathname.includes('/share/') && <Script src={`/telemetry.js`} />}
+      {!process.env.telemetryDisabled && (
+        <img src={`https://i.umami.is/a.png?v=${current}`} alt="" />
+      )}
     </footer>
   );
 }

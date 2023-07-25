@@ -1,11 +1,10 @@
 import { useMemo } from 'react';
 import { useRouter } from 'next/router';
-import { buildUrl } from 'next-basics';
+import { getQueryString } from 'lib/url';
 
 export default function usePageQuery() {
   const router = useRouter();
   const { pathname, search } = location;
-  const { asPath } = router;
 
   const query = useMemo(() => {
     if (!search) {
@@ -24,7 +23,11 @@ export default function usePageQuery() {
   }, [search]);
 
   function resolve(params) {
-    return buildUrl(asPath.split('?')[0], { ...query, ...params });
+    const search = getQueryString({ ...query, ...params });
+
+    const { asPath } = router;
+
+    return `${asPath.split('?')[0]}${search}`;
   }
 
   return { pathname, query, resolve, router };

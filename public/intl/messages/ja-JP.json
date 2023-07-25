@@ -29,6 +29,12 @@
       "value": "すべて表示"
     }
   ],
+  "label.all-events": [
+    {
+      "type": 0,
+      "value": "All events"
+    }
+  ],
   "label.all-time": [
     {
       "type": 0,
@@ -443,12 +449,6 @@
       "value": "関連するすべてのデータも削除されます。"
     }
   ],
-  "message.edit-dashboard": [
-    {
-      "type": 0,
-      "value": "Edit dashboard"
-    }
-  ],
   "message.failure": [
     {
       "type": 0,
@@ -737,12 +737,6 @@
     {
       "type": 0,
       "value": "ページ"
-    }
-  ],
-  "metrics.query-parameters": [
-    {
-      "type": 0,
-      "value": "Query parameters"
     }
   ],
   "metrics.referrers": [

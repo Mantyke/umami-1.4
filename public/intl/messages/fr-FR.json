@@ -29,6 +29,12 @@
       "value": "Tout"
     }
   ],
+  "label.all-events": [
+    {
+      "type": 0,
+      "value": "Tous les événements"
+    }
+  ],
   "label.all-time": [
     {
       "type": 0,
@@ -38,7 +44,7 @@
   "label.all-websites": [
     {
       "type": 0,
-      "value": "Tous les sites"
+      "value": "Tous les sites web"
     }
   ],
   "label.back": [
@@ -170,7 +176,7 @@
   "label.language": [
     {
       "type": 0,
-      "value": "Langue"
+      "value": "Langage"
     }
   ],
   "label.last-days": [
@@ -332,7 +338,7 @@
   "label.this-month": [
     {
       "type": 0,
-      "value": "Ce mois"
+      "value": "Ce mois ci"
     }
   ],
   "label.this-week": [
@@ -387,12 +393,6 @@
     {
       "type": 0,
       "value": "Sites"
-    }
-  ],
-  "label.yesterday": [
-    {
-      "type": 0,
-      "value": "Hier"
     }
   ],
   "message.active-users": [
@@ -450,7 +450,7 @@
   "message.confirm-reset": [
     {
       "type": 0,
-      "value": "Êtes-vous sûr de vouloir réinitialiser les statistiques de "
+      "value": "Êtes-vous sûr de vouloir réinistialiser les statistiques de "
     },
     {
       "type": 1,
@@ -471,12 +471,6 @@
     {
       "type": 0,
       "value": "Toutes les données associées seront également supprimées."
-    }
-  ],
-  "message.edit-dashboard": [
-    {
-      "type": 0,
-      "value": "Modifier le tableau de bord"
     }
   ],
   "message.failure": [
@@ -566,7 +560,7 @@
   "message.no-websites-configured": [
     {
       "type": 0,
-      "value": "Vous n'avez configuré aucun site."
+      "value": "Vous n'avez configuré aucun site Web."
     }
   ],
   "message.page-not-found": [
@@ -588,7 +582,7 @@
   "message.reset-warning": [
     {
       "type": 0,
-      "value": "Toutes les statistiques pour ce site seront supprimées, mais votre code de suivi restera intact."
+      "value": "Toutes les statistiques pour ce site seront supprimés, mais votre code de suivi restera intact."
     }
   ],
   "message.save-success": [
@@ -636,7 +630,7 @@
     },
     {
       "type": 0,
-      "value": " de votre site."
+      "value": " de votre site Web."
     }
   ],
   "message.type-delete": [
@@ -748,7 +742,7 @@
   "metrics.languages": [
     {
       "type": 0,
-      "value": "Langues"
+      "value": "Langages"
     }
   ],
   "metrics.operating-systems": [
@@ -769,12 +763,6 @@
       "value": "Pages"
     }
   ],
-  "metrics.query-parameters": [
-    {
-      "type": 0,
-      "value": "Paramètres d'URL"
-    }
-  ],
   "metrics.referrers": [
     {
       "type": 0,
@@ -784,7 +772,7 @@
   "metrics.screens": [
     {
       "type": 0,
-      "value": "Résolutions d'écran"
+      "value": "Tailles d'écran"
     }
   ],
   "metrics.unique-visitors": [

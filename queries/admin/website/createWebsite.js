@@ -1,9 +1,9 @@
-import prisma from 'lib/prisma';
-import redis from 'lib/redis';
+import { runQuery } from 'lib/queries';
+import prisma from 'lib/db';
 
 export async function createWebsite(user_id, data) {
-  return prisma.client.website
-    .create({
+  return runQuery(
+    prisma.website.create({
       data: {
         account: {
           connect: {
@@ -12,12 +12,6 @@ export async function createWebsite(user_id, data) {
         },
         ...data,
       },
-    })
-    .then(async res => {
-      if (redis.client && res) {
-        await redis.client.set(`website:${res.website_uuid}`, res.website_id);
-      }
-
-      return res;
-    });
+    }),
+  );
 }

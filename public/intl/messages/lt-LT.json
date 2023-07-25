@@ -29,6 +29,12 @@
       "value": "Visi"
     }
   ],
+  "label.all-events": [
+    {
+      "type": 0,
+      "value": "Visi įvykiai"
+    }
+  ],
   "label.all-time": [
     {
       "type": 0,
@@ -596,12 +602,6 @@
       "value": "Visi susiję duomenys taip pat bus ištrinti."
     }
   ],
-  "message.edit-dashboard": [
-    {
-      "type": 0,
-      "value": "Edit dashboard"
-    }
-  ],
   "message.failure": [
     {
       "type": 0,
@@ -890,12 +890,6 @@
     {
       "type": 0,
       "value": "Puslapiai"
-    }
-  ],
-  "metrics.query-parameters": [
-    {
-      "type": 0,
-      "value": "Query parameters"
     }
   ],
   "metrics.referrers": [

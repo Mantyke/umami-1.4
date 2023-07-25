@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import classNames from 'classnames';
 import WebsiteChart from 'components/metrics/WebsiteChart';
 import WorldMap from 'components/common/WorldMap';
@@ -18,25 +18,11 @@ import CountriesTable from 'components/metrics/CountriesTable';
 import LanguagesTable from 'components/metrics/LanguagesTable';
 import EventsTable from 'components/metrics/EventsTable';
 import EventsChart from 'components/metrics/EventsChart';
-import ScreenTable from 'components/metrics/ScreenTable';
-import QueryParametersTable from 'components/metrics/QueryParametersTable';
 import useFetch from 'hooks/useFetch';
 import usePageQuery from 'hooks/usePageQuery';
 import { DEFAULT_ANIMATION_DURATION } from 'lib/constants';
 import styles from './WebsiteDetails.module.css';
-
-const messages = defineMessages({
-  pages: { id: 'metrics.pages', defaultMessage: 'Pages' },
-  referrers: { id: 'metrics.referrers', defaultMessage: 'Referrers' },
-  screens: { id: 'metrics.screens', defaultMessage: 'Screens' },
-  browsers: { id: 'metrics.browsers', defaultMessage: 'Browsers' },
-  os: { id: 'metrics.operating-systems', defaultMessage: 'Operating system' },
-  devices: { id: 'metrics.devices', defaultMessage: 'Devices' },
-  countries: { id: 'metrics.countries', defaultMessage: 'Countries' },
-  languages: { id: 'metrics.languages', defaultMessage: 'Languages' },
-  events: { id: 'metrics.events', defaultMessage: 'Events' },
-  query: { id: 'metrics.query-parameters', defaultMessage: 'Query parameters' },
-});
+import ScreenTable from 'components/metrics/ScreenTable';
 
 const views = {
   url: PagesTable,
@@ -48,7 +34,6 @@ const views = {
   country: CountriesTable,
   language: LanguagesTable,
   event: EventsTable,
-  query: QueryParametersTable,
 };
 
 export default function WebsiteDetails({ websiteId }) {
@@ -60,7 +45,6 @@ export default function WebsiteDetails({ websiteId }) {
     resolve,
     query: { view },
   } = usePageQuery();
-  const { formatMessage } = useIntl();
 
   const BackButton = () => (
     <div key="back-button" className={classNames(styles.backButton, 'col-12')}>
@@ -75,44 +59,40 @@ export default function WebsiteDetails({ websiteId }) {
       render: BackButton,
     },
     {
-      label: formatMessage(messages.pages),
+      label: <FormattedMessage id="metrics.pages" defaultMessage="Pages" />,
       value: resolve({ view: 'url' }),
     },
     {
-      label: formatMessage(messages.referrers),
+      label: <FormattedMessage id="metrics.referrers" defaultMessage="Referrers" />,
       value: resolve({ view: 'referrer' }),
     },
     {
-      label: formatMessage(messages.browsers),
-      value: resolve({ view: 'browser' }),
-    },
-    {
-      label: formatMessage(messages.os),
-      value: resolve({ view: 'os' }),
-    },
-    {
-      label: formatMessage(messages.devices),
-      value: resolve({ view: 'device' }),
-    },
-    {
-      label: formatMessage(messages.countries),
-      value: resolve({ view: 'country' }),
-    },
-    {
-      label: formatMessage(messages.languages),
-      value: resolve({ view: 'language' }),
-    },
-    {
-      label: formatMessage(messages.screens),
+      label: <FormattedMessage id="metrics.screens" defaultMessage="Screens" />,
       value: resolve({ view: 'screen' }),
     },
     {
-      label: formatMessage(messages.events),
-      value: resolve({ view: 'event' }),
+      label: <FormattedMessage id="metrics.browsers" defaultMessage="Browsers" />,
+      value: resolve({ view: 'browser' }),
     },
     {
-      label: formatMessage(messages.query),
-      value: resolve({ view: 'query' }),
+      label: <FormattedMessage id="metrics.operating-systems" defaultMessage="Operating system" />,
+      value: resolve({ view: 'os' }),
+    },
+    {
+      label: <FormattedMessage id="metrics.devices" defaultMessage="Devices" />,
+      value: resolve({ view: 'device' }),
+    },
+    {
+      label: <FormattedMessage id="metrics.countries" defaultMessage="Countries" />,
+      value: resolve({ view: 'country' }),
+    },
+    {
+      label: <FormattedMessage id="metrics.languages" defaultMessage="Languages" />,
+      value: resolve({ view: 'language' }),
+    },
+    {
+      label: <FormattedMessage id="metrics.events" defaultMessage="Events" />,
+      value: resolve({ view: 'event' }),
     },
   ];
 

@@ -1,20 +1,6 @@
-import prisma from 'lib/prisma';
+import { runQuery } from 'lib/queries';
+import prisma from 'lib/db';
 
 export async function resetWebsite(website_id) {
-  const { client, transaction } = prisma;
-
-  return transaction([
-    client.pageview.deleteMany({
-      where: { session: { website: { website_id } } },
-    }),
-    client.event_data.deleteMany({
-      where: { event: { session: { website: { website_id } } } },
-    }),
-    client.event.deleteMany({
-      where: { session: { website: { website_id } } },
-    }),
-    client.session.deleteMany({
-      where: { website: { website_id } },
-    }),
-  ]);
+  return runQuery(prisma.$queryRaw`delete from session where website_id=${website_id}`);
 }

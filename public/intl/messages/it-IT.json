@@ -29,6 +29,12 @@
       "value": "Tutto"
     }
   ],
+  "label.all-events": [
+    {
+      "type": 0,
+      "value": "Tutti gli eventi"
+    }
+  ],
   "label.all-time": [
     {
       "type": 0,
@@ -397,12 +403,6 @@
       "value": "Siti web"
     }
   ],
-  "label.yesterday": [
-    {
-      "type": 0,
-      "value": "Ieri"
-    }
-  ],
   "message.active-users": [
     {
       "type": 1,
@@ -479,12 +479,6 @@
     {
       "type": 0,
       "value": "Saranno eliminati anche tutti i dati associati."
-    }
-  ],
-  "message.edit-dashboard": [
-    {
-      "type": 0,
-      "value": "Edit dashboard"
     }
   ],
   "message.failure": [
@@ -775,12 +769,6 @@
     {
       "type": 0,
       "value": "Pagine"
-    }
-  ],
-  "metrics.query-parameters": [
-    {
-      "type": 0,
-      "value": "Query parameters"
     }
   ],
   "metrics.referrers": [

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { defineMessages, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { useRouter } from 'next/router';
 import Page from 'components/layout/Page';
 import PageHeader from 'components/layout/PageHeader';
@@ -7,24 +7,19 @@ import WebsiteList from 'components/pages/WebsiteList';
 import Button from 'components/common/Button';
 import DashboardSettingsButton from 'components/settings/DashboardSettingsButton';
 import useFetch from 'hooks/useFetch';
-import useDashboard from 'store/dashboard';
-import DashboardEdit from './DashboardEdit';
+import useStore from 'store/app';
 import styles from './WebsiteList.module.css';
 
-const messages = defineMessages({
-  dashboard: { id: 'label.dashboard', defaultMessage: 'Dashboard' },
-  more: { id: 'label.more', defaultMessage: 'More' },
-});
+const selector = state => state.dashboard;
 
 export default function Dashboard() {
   const router = useRouter();
   const { id } = router.query;
   const userId = id?.[0];
-  const dashboard = useDashboard();
-  const { showCharts, limit, editing } = dashboard;
+  const store = useStore(selector);
+  const { showCharts, limit } = store;
   const [max, setMax] = useState(limit);
   const { data } = useFetch('/websites', { params: { user_id: userId } });
-  const { formatMessage } = useIntl();
 
   function handleMore() {
     setMax(max + limit);
@@ -37,14 +32,15 @@ export default function Dashboard() {
   return (
     <Page>
       <PageHeader>
-        <div>{formatMessage(messages.dashboard)}</div>
-        {!editing && <DashboardSettingsButton />}
+        <div>
+          <FormattedMessage id="label.dashboard" defaultMessage="Dashboard" />
+        </div>
+        <DashboardSettingsButton />
       </PageHeader>
-      {editing && <DashboardEdit websites={data} />}
-      {!editing && <WebsiteList websites={data} showCharts={showCharts} limit={max} />}
+      <WebsiteList websites={data} showCharts={showCharts} limit={max} />
       {max < data.length && (
         <Button className={styles.button} onClick={handleMore}>
-          {formatMessage(messages.more)}
+          <FormattedMessage id="label.more" defaultMessage="More" />
         </Button>
       )}
     </Page>
